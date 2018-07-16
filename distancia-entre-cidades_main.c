@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <math.h>
 
 /*
 
@@ -20,7 +22,9 @@ geográfico, a posição inicial é 1).
 */
 
 int main () {
-  int i, j;
+  int i, j, x_i, x_j, y_i, y_j;
+  double a;
+  char x, y;
 
   /* Matriz para definir a posição de cada cidade */
   char plano[20][21];
@@ -40,11 +44,13 @@ int main () {
   plano[1][18] = 'd';
 
   /* Printa o gráfico com as cidades e suas coordenadas */
-  printf("\nGeográfico\n\n");
+  printf("\n Geográfico\n\n");
   printf("    "); // espaço em branco antes da linha que enumera as colunas
+
   for (j = 0; j < 20; j++) { // printa a linha que enumera as colunas
     printf(" %2d|", j + 1);
   }
+
   printf("\n");
 
   for (i = 0; i < 20; i++) { // printa o plano com as posições das cidades
@@ -56,6 +62,29 @@ int main () {
     printf("\n");
   }
 
-  printf("\n\n");
+  printf("\n");
+
+  /* Calcula distância entre dois pontos */
+  printf(" Digite, na mesma linha, os caracteres que corresponde às duas cidades que você deseja calcular a distância: ");
+  fflush(stdin);
+  scanf("%c %c", &x, &y);
+
+  for (i = 0; i < 20; i++) {
+    for (j = 0; j < 20; j++) {
+      if (plano[i][j] == x) { // procura pela primeira opção
+        x_i = i; // armazena a linha da matriz correspondente à cidade
+        x_j = j; // armazena a coluna da matriz correspondente à cidade
+      }
+      if (plano[i][j] == y) { // procura pela segunda opção
+        y_i = i; // armazena a linha da matriz correspondente à cidade
+        y_j = j; // armazena a coluna da matriz correspondente à cidade
+      }
+    }
+  }
+
+  a = sqrt(pow((x_i - y_i), 2) + pow((x_j - y_j), 2)); // calcula a distância usando pitagoras
+
+  printf(" A distância entre as cidades %c e %c é de %.3lf km\n\n", x, y, a); // exibe resultado
+
   return 0;
 }
