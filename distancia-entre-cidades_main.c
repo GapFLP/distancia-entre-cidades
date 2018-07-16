@@ -44,17 +44,17 @@ int main () {
 
   /* Printa o gráfico com as cidades e suas coordenadas */
   printf("\nGeográfico\n\n");
-  printf("       "); // espaço em branco antes da linha que enumera as colunas
+  printf("      "); // espaço em branco antes da linha que enumera as colunas
   for (j = 0; j < 20; j++) { // printa a linha que enumera as colunas
-    printf("[ %2d ] ", j + 1);
+    printf("[ %2d ]", j + 1);
   }
   printf("\n");
 
   for (i = 0; i < 20; i++) { // printa o plano com as posições das cidades
-    printf("[ %2d ] ", i + 1); // printa a coluna que enumera as linhas
+    printf("[ %2d ]", i + 1); // printa a coluna que enumera as linhas
     for (j = 0; j < 20; j++) {
-      if (plano[i][j] == 'f') printf("       "); // printa os espaços vazios
-      else printf("[ %c  ] ", plano[i][j]); // printa as cidades em suas posições
+      if (plano[i][j] == 'f') printf("      "); // printa os espaços vazios
+      else printf("[ %c  ]", plano[i][j]); // printa as cidades em suas posições
     }
     printf("\n");
   }
